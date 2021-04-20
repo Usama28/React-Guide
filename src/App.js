@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState,useEffect} from 'react'
+import PageOne from './Pages/Page1'
+import FormValidation from './Pages/FormValidation'
 
 function App() {
+
+  const [names,setNames]=useState(['ali','abdullah','usman'])
+  
+
+  const editFunct=(value)=>{
+    const temp=[...names]
+    temp.push(value)
+    setNames(temp)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+              <h1>Todo using parent/child</h1>
+            <PageOne names={names} setNames={setNames} editFunct={editFunct}/>
+            <h1>Form Validation</h1>
+            <FormValidation/>
+
     </div>
   );
 }
